@@ -1,0 +1,57 @@
+{
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"sourceRoot": "apps/json-upload-service/src",
+	"projectType": "application",
+	"targets": {
+		"build": {
+			"executor": "@nrwl/node:webpack",
+			"outputs": ["{options.outputPath}"],
+			"options": {
+				"outputPath": "dist/apps/json-upload-service",
+				"main": "apps/json-upload-service/src/main.ts",
+				"tsConfig": "apps/json-upload-service/tsconfig.app.json",
+				"assets": ["apps/json-upload-service/src/assets"]
+			},
+			"configurations": {
+				"production": {
+					"optimization": true,
+					"extractLicenses": true,
+					"inspect": false,
+					"fileReplacements": [
+						{
+							"replace": "apps/json-upload-service/src/environments/environment.ts",
+							"with": "apps/json-upload-service/src/environments/environment.prod.ts"
+						}
+					]
+				}
+			}
+		},
+		"serve": {
+			"executor": "@nrwl/node:node",
+			"options": {
+				"buildTarget": "json-upload-service:build"
+			},
+			"configurations": {
+				"production": {
+					"buildTarget": "json-upload-service:build:production"
+				}
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"outputs": ["{options.outputFile}"],
+			"options": {
+				"lintFilePatterns": ["apps/json-upload-service/**/*.ts"]
+			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"outputs": ["coverage/apps/json-upload-service"],
+			"options": {
+				"jestConfig": "apps/json-upload-service/jest.config.ts",
+				"passWithNoTests": true
+			}
+		}
+	},
+	"tags": []
+}
