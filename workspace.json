@@ -3,6 +3,7 @@
 	"version": 2,
 	"projects": {
 		"json-upload-schema": "libs/json-upload-schema",
-		"json-upload-service": "apps/json-upload-service"
+		"json-upload-service": "apps/json-upload-service",
+		"utils": "libs/utils"
 	}
 }

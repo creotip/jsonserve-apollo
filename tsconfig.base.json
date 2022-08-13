@@ -15,7 +15,8 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"paths": {
-			"@jsonserve-apollo/json-upload-schema": ["libs/json-upload-schema/src/index.ts"]
+			"@jsonserve-apollo/json-upload-schema": ["libs/json-upload-schema/src/index.ts"],
+			"@jsonserve-apollo/utils": ["libs/utils/src/index.ts"]
 		}
 	},
 	"exclude": ["node_modules", "tmp"]
