@@ -22,6 +22,9 @@ async function startApolloServer() {
 			csrfPrevention: true,
 			cache: 'bounded',
 			plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+			context: ({ req }) => {
+				return req
+			},
 		})
 
 		await server.start()
@@ -37,8 +40,6 @@ async function startApolloServer() {
 		app.use(express.json())
 		app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 		app.get('/:hash', async (req, res) => {
-			console.log('req', req.params)
-
 			const item = await UploadJSONModel.findOne({
 				hash: req.params.hash,
 			}).lean()
