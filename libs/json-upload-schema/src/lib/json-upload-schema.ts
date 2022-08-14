@@ -3,8 +3,9 @@ import { composeMongoose } from 'graphql-compose-mongoose'
 import { schemaComposer } from 'graphql-compose'
 
 export interface UploadJSON {
-	jsonData: string
+	jsonData: string | any
 	hash: string
+	ip: string
 }
 
 export interface UploadJSONDocument extends UploadJSON, mongoose.Document {}
@@ -16,6 +17,7 @@ export const UploadJSONSchema = new mongoose.Schema(
 			required: true,
 		},
 		hash: String,
+		ip: String,
 	},
 	{
 		timestamps: true,
@@ -41,4 +43,4 @@ schemaComposer.Mutation.addFields({
 	uploadJSONRemoveOne: UploadJSONTC.mongooseResolvers.removeOne(),
 })
 
-export const jsonUploadSchema = schemaComposer.buildSchema()
+export const schema = schemaComposer.buildSchema()

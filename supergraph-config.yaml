@@ -1,0 +1,6 @@
+federation_version: 2
+subgraphs:
+  upload_json_service:
+    routing_url: http://localhost:4100/graphql
+    schema:
+      subgraph_url: http://localhost:4100/graphql

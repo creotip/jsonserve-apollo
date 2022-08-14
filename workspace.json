@@ -2,6 +2,8 @@
 	"$schema": "./node_modules/nx/schemas/workspace-schema.json",
 	"version": 2,
 	"projects": {
+		"gateway": "apps/gateway",
+		"json-upload-express": "apps/json-upload-express",
 		"json-upload-schema": "libs/json-upload-schema",
 		"json-upload-service": "apps/json-upload-service",
 		"utils": "libs/utils"
