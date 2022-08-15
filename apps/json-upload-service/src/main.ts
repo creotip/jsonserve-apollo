@@ -30,6 +30,7 @@ async function startApolloServer() {
 			csrfPrevention: true,
 			cache: 'bounded',
 			plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
+			introspection: process.env.NODE_ENV !== 'production',
 			context: ({ req, res }) => {
 				return { req, res }
 			},
