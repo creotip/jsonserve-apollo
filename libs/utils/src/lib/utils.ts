@@ -1,4 +1,4 @@
-import { blueBright, green, redBright } from 'chalk'
+import chalk from 'chalk'
 import * as mongoose from 'mongoose'
 
 export const connectDB = async (mongodbURI: string, dbName: string) => {
@@ -8,12 +8,12 @@ export const connectDB = async (mongodbURI: string, dbName: string) => {
 	try {
 		await mongoose.connect(mongodbURI, { autoIndex: false, dbName }, (error) => {
 			if (error) {
-				console.log(redBright(error))
+				console.log(chalk.redBright(error))
 			}
 		})
-		console.log(blueBright('🐣 mongodb database started'))
-		console.log(green(`🙉 dbURL `, mongodbURI))
-		console.log(green(`🙉 dbName `, dbName))
+		console.log(chalk.blueBright('🐣 mongodb database started'))
+		console.log(chalk.green(`🙉 dbURL `, mongodbURI))
+		console.log(chalk.green(`🙉 dbName `, dbName))
 		return mongoose.connection
 	} catch (error) {
 		console.log('Something went wrong while connecting to mongodb', error)
@@ -24,7 +24,7 @@ export const connectDB = async (mongodbURI: string, dbName: string) => {
 export const disconnectDB = async () => {
 	try {
 		await mongoose.disconnect()
-		console.log(blueBright('🐣 mongodb database disconnected'))
+		console.log(chalk.blueBright('🐣 mongodb database disconnected'))
 	} catch (error) {
 		console.log('Something went wrong while disconnecting from mongodb', error)
 		return error
