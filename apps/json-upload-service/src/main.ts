@@ -7,7 +7,7 @@ import { schema, UploadJSONModel } from '@jsonserve-apollo/json-upload-schema'
 import { connectDB, disconnectDB } from '@jsonserve-apollo/utils'
 import rateLimit from 'express-rate-limit'
 
-const port = process.env.APOLLO_SUBGRAPH_PRODUCTS_PORT || 4100
+const port = process.env.APOLLO_UPLOAD_JSON_SERVICE_PORT || 4100
 const mongodbURI = process.env.MONGODB_URI
 const dbName = process.env.MONGODB_NAME
 
