@@ -2,6 +2,7 @@ import mongoose from 'mongoose'
 import { composeMongoose } from 'graphql-compose-mongoose'
 import { schemaComposer } from 'graphql-compose'
 import * as shortid from 'shortid'
+import { isValidJSON } from '@jsonserve-apollo/utils'
 
 export interface UploadJSON {
 	jsonData: string
@@ -39,12 +40,15 @@ const createUploadJSONResolver = schemaComposer.createResolver({
 		jsonData: 'String!',
 	},
 	type: UploadJSONTC,
-	resolve: async ({ source, args, context, info }) => {
+	resolve: async ({ args, context }) => {
 		const { jsonData } = args
-		const id = shortid.generate()
 
-		const newRecord = await UploadJSONModel.create({ jsonData, hash: id, ip: context.ip })
-		return newRecord as UploadJSON
+		if (!isValidJSON(jsonData)) {
+			throw new Error('JSON is not valid!')
+		} else {
+			const id = shortid.generate()
+			return await UploadJSONModel.create({ jsonData, hash: id, ip: context.req.ip })
+		}
 	},
 })
 

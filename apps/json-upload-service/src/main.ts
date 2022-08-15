@@ -22,8 +22,8 @@ async function startApolloServer() {
 			csrfPrevention: true,
 			cache: 'bounded',
 			plugins: [ApolloServerPluginDrainHttpServer({ httpServer })],
-			context: ({ req }) => {
-				return req
+			context: ({ req, res }) => {
+				return { req, res }
 			},
 		})
 
@@ -37,12 +37,12 @@ async function startApolloServer() {
 			magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
 		)
 
-		app.use(express.json())
 		app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 		app.get('/:hash', async (req, res) => {
 			const item = await UploadJSONModel.findOne({
 				hash: req.params.hash,
 			}).lean()
+
 
 			if (item?.jsonData) {
 				return res.status(200).json(item.jsonData)
