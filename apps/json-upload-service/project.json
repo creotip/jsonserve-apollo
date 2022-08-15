@@ -22,7 +22,8 @@
 							"replace": "apps/json-upload-service/src/environments/environment.ts",
 							"with": "apps/json-upload-service/src/environments/environment.prod.ts"
 						}
-					]
+					],
+          "generatePackageJson": true
 				}
 			}
 		},
