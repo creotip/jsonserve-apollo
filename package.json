@@ -5,9 +5,8 @@
 	"scripts": {
 		"start": "nx serve",
 		"build": "nx build",
-		"test": "nx test",
-		"generate-supergraph": "rover supergraph compose --config ./supergraph-config.yaml > supergraph.graphql"
-	},
+		"test": "nx test"
+  },
 	"private": true,
 	"dependencies": {
 		"@apollo/gateway": "^2.0.5",
