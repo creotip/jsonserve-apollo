@@ -2,10 +2,10 @@ import { ApolloError, ApolloServer } from 'apollo-server-express'
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core'
 import * as express from 'express'
 import * as http from 'http'
-import { magentaBright } from 'chalk'
 import { schema, UploadJSONModel } from '@jsonserve-apollo/json-upload-schema'
 import { connectDB, disconnectDB } from '@jsonserve-apollo/utils'
 import rateLimit from 'express-rate-limit'
+import chalk from 'chalk'
 
 const port = process.env.APOLLO_UPLOAD_JSON_SERVICE_PORT || 4100
 const mongodbURI = process.env.MONGODB_URI
@@ -60,7 +60,7 @@ async function startApolloServer() {
 		await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
 
 		console.log(
-			magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
+			chalk.magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
 		)
 	} catch (err) {
 		await disconnectDB()
