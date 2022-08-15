@@ -5,10 +5,18 @@ import * as http from 'http'
 import { magentaBright } from 'chalk'
 import { schema, UploadJSONModel } from '@jsonserve-apollo/json-upload-schema'
 import { connectDB, disconnectDB } from '@jsonserve-apollo/utils'
+import rateLimit from 'express-rate-limit'
 
 const port = process.env.APOLLO_SUBGRAPH_PRODUCTS_PORT || 4100
 const mongodbURI = process.env.MONGODB_URI
 const dbName = process.env.MONGODB_NAME
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+})
 
 async function startApolloServer() {
 	try {
@@ -31,18 +39,13 @@ async function startApolloServer() {
 
 		server.applyMiddleware({ app, path: '/graphql' })
 
-		await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
-
-		console.log(
-			magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
-		)
+		app.use(limiter)
 
 		app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 		app.get('/:hash', async (req, res) => {
 			const item = await UploadJSONModel.findOne({
 				hash: req.params.hash,
 			}).lean()
-
 
 			if (item?.jsonData) {
 				return res.status(200).json(item.jsonData)
@@ -52,6 +55,12 @@ async function startApolloServer() {
 				error: 'Not found',
 			})
 		})
+
+		await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
+
+		console.log(
+			magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
+		)
 	} catch (err) {
 		await disconnectDB()
 		throw new ApolloError(err || 'Something went wrong in Apollo')
