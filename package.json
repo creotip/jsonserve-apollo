@@ -6,25 +6,18 @@
 		"start": "nx serve",
 		"build": "nx build",
 		"test": "nx test",
-    "docker:build": "docker build -f ./apps/json-upload-service/Dockerfile . -t json-upload-service"
-  },
+		"docker:build": "docker build -f ./apps/json-upload-service/Dockerfile . -t json-upload-service"
+	},
 	"private": true,
 	"dependencies": {
-		"@apollo/gateway": "^2.0.5",
-		"@apollo/subgraph": "^2.0.5",
-		"@graphql-tools/schema": "^9.0.1",
-		"apollo-server": "^3.10.1",
 		"apollo-server-express": "^3.10.1",
 		"express": "^4.18.1",
-		"express-graphql": "^0.12.0",
 		"express-rate-limit": "^6.5.1",
 		"graphql": "^16.5.0",
 		"graphql-compose": "^9.0.8",
 		"graphql-compose-mongoose": "^9.7.1",
 		"mongodb-memory-server-core": "^8.8.0",
 		"mongoose": "^6.5.2",
-		"nanoid": "^4.0.0",
-		"request-ip": "^3.3.0",
 		"shortid": "^2.2.16",
 		"tslib": "^2.3.0"
 	},
