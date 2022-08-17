@@ -33,14 +33,19 @@ jobs:
           tags: creotip/json-upload-service:latest
           file: ./apps/json-upload-service/Dockerfile
 
-#      - name: Build and push Docker images
-#        uses: docker/build-push-action@v1
-#        with:
-#          username: ${{ secrets.DOCKERHUB_USERNAME }}
-#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-#          repository: mvkaran/openmct
-#          tag_with_ref: true
-#          tag_with_sha: true
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: GitHub Action for DigitalOcean - doctl
+        uses: digitalocean/action-doctl@v2.1.1
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: List droplets
+        run:  doctl compute droplet list
+      - name: Create deployment
+        run: doctl apps create-deployment 3e35223d-7cbe-45a7-b9b4-bdc88fad9c5e
 
 #  docker:
 #    runs-on: ubuntu-latest
@@ -64,19 +69,7 @@ jobs:
 #          tags: creotip/json-upload-service:latest
 #          file: ./apps/json-upload-service/Dockerfile
 #
-#  deploy:
-#    runs-on: ubuntu-latest
-#    steps:
-#
-#      - name: GitHub Action for DigitalOcean - doctl
-#        uses: digitalocean/action-doctl@v2.1.1
-#        with:
-#          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
-#
-#      - name: List droplets
-#        run:  doctl compute droplet list
-#      - name: Create deployment
-#        run: doctl apps create-deployment 3e35223d-7cbe-45a7-b9b4-bdc88fad9c5e
+
 #
 #
 #
