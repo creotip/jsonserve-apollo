@@ -34,6 +34,8 @@ jobs:
           file: ./apps/json-upload-service/Dockerfile
 
   deploy:
+    needs:
+      - build
     runs-on: ubuntu-latest
     steps:
 
