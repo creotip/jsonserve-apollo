@@ -15,17 +15,17 @@ jobs:
       - run: npm i
       - run: npm test
 
-      - name: build app
-      - run: npm run build:json-upload-service
-
-      - name: Build and push Docker images
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: mvkaran/openmct
-          tag_with_ref: true
-          tag_with_sha: true
+#      - name: build app
+#      - run: npm run build:json-upload-service
+#
+#      - name: Build and push Docker images
+#        uses: docker/build-push-action@v1
+#        with:
+#          username: ${{ secrets.DOCKERHUB_USERNAME }}
+#          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+#          repository: mvkaran/openmct
+#          tag_with_ref: true
+#          tag_with_sha: true
 
 #  docker:
 #    runs-on: ubuntu-latest
