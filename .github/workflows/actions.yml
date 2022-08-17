@@ -16,9 +16,22 @@ jobs:
       - run: npm i
       - run: npm test
 #
-#      - name: build app
-#      - run: npm run build:json-upload-service
-#
+      - name: build app
+        run: npm run build:json-upload-service
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          push: true
+          tags: creotip/json-upload-service:latest
+          file: ./apps/json-upload-service/Dockerfile
+
 #      - name: Build and push Docker images
 #        uses: docker/build-push-action@v1
 #        with:
