@@ -12,8 +12,8 @@ jobs:
         with:
           node-version: 16
           cache: 'npm'
-      - run: npm i
-      - run: npm test
+#      - run: npm i
+#      - run: npm test
 
 #      - name: build app
 #      - run: npm run build:json-upload-service
