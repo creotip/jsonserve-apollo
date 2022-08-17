@@ -8,9 +8,9 @@
 		"test": "nx test",
     "serve:json-upload-service": "nx run json-upload-service:serve:production",
     "build:json-upload-service": "nx run json-upload-service:build:production",
-		"docker:build": "docker build -f ./apps/json-upload-service/Dockerfile . -t creotip/json-upload-service:0.3",
+		"docker:build": "docker build -f ./apps/json-upload-service/Dockerfile . -t creotip/json-upload-service:latest",
 		"docker:tag": "docker tag creotip/json-upload-service",
-		"docker:push": "docker push creotip/json-upload-service:0.3 "
+		"docker:push": "docker push creotip/json-upload-service:latest"
 	},
 	"private": true,
 	"dependencies": {

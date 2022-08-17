@@ -1,0 +1,24 @@
+domains:
+  - domain: api.quizio.io
+    type: PRIMARY
+envs:
+  - key: APOLLO_UPLOAD_JSON_SERVICE_PORT
+    scope: RUN_AND_BUILD_TIME
+    value: "8080"
+  - key: NODE_ENV
+    scope: RUN_AND_BUILD_TIME
+    value: production
+name: jsonserve-apollo-docker
+region: fra
+services:
+  - http_port: 8080
+    image:
+      registry: creotip
+      registry_type: DOCKER_HUB
+      repository: json-upload-service
+      tag: 0.3
+    instance_count: 1
+    instance_size_slug: basic-xxs
+    name: creotip-json-upload-service
+    routes:
+      - path: /
