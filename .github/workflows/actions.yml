@@ -5,16 +5,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout files
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Install dependencies
-      - uses: actions/setup-node@v3
-#        with:
-#          node-version: 16
-#          cache: 'npm'
-#      - run: npm i
-#      - run: npm test
-
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'npm'
+      - run: npm i
+      - run: npm test
+#
 #      - name: build app
 #      - run: npm run build:json-upload-service
 #
