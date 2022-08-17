@@ -60,7 +60,7 @@ async function startApolloServer() {
 		await new Promise<void>((resolve) => httpServer.listen({ port }, resolve))
 
 		console.log(
-			magentaBright`🚀 UploadJSON subgraph ready at http://localhost:${port}${server.graphqlPath}`
+			magentaBright`🚀 UploadJSON service ready at http://localhost:${port}${server.graphqlPath}`
 		)
 	} catch (err) {
 		await disconnectDB()
