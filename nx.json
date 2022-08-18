@@ -24,5 +24,18 @@
 			"dependsOn": ["^build"]
 		}
 	},
-	"defaultProject": "json-upload-service"
+	"defaultProject": "json-upload-service",
+	"generators": {
+		"@nrwl/react": {
+			"application": {
+				"babel": true
+			}
+		},
+		"@nrwl/next": {
+			"application": {
+				"style": "@emotion/styled",
+				"linter": "eslint"
+			}
+		}
+	}
 }

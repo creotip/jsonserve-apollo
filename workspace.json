@@ -4,6 +4,7 @@
 	"projects": {
 		"json-upload-schema": "libs/json-upload-schema",
 		"json-upload-service": "apps/json-upload-service",
+		"jsonserve-app": "apps/jsonserve-app",
 		"utils": "libs/utils"
 	}
 }
