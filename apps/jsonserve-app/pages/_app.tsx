@@ -1,7 +1,9 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
-import './styles.css'
+// import './styles.css'
+import { ApolloProvider } from '@apollo/client'
+import client from '../config/apollo-client'
 
 function CustomApp({ Component, pageProps }: AppProps) {
 	return (
@@ -9,9 +11,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
 			<Head>
 				<title>Welcome to jsonserve-app!</title>
 			</Head>
-			<ChakraProvider>
-				<Component {...pageProps} />
-			</ChakraProvider>
+			<ApolloProvider client={client}>
+				<ChakraProvider>
+					<Component {...pageProps} />
+				</ChakraProvider>
+			</ApolloProvider>
 		</>
 	)
 }
