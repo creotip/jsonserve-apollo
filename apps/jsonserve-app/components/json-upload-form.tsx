@@ -71,7 +71,7 @@ export const JsonUploadForm = () => {
 	return (
 		<Box mb='1.45rem'>
 			<Textarea
-				rows={9}
+				rows={8}
 				onChange={(e) => handleTextArea(e)}
 				value={jsonData}
 				bgColor={bgColor}
