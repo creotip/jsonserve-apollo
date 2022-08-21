@@ -1954,11 +1954,6 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@fontsource/barlow@^4.5.8":
-  version "4.5.8"
-  resolved "https://registry.yarnpkg.com/@fontsource/barlow/-/barlow-4.5.8.tgz#7e672230965a0761548f2d1805ee32d84b8b65d1"
-  integrity sha512-tfSFrtac5nVIehoYpQf0ZW1W+sKDnk3NEpuMfiyKHQFB95Mz00kSnZqXnIEaAwMxRjoLk+HQzaH+1O7B6Uo3rA==
-
 "@graphql-tools/merge@8.3.1":
   version "8.3.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/merge/-/merge-8.3.1.tgz#06121942ad28982a14635dbc87b5d488a041d722"
