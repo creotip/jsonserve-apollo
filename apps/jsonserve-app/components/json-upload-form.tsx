@@ -90,7 +90,7 @@ export const JsonUploadForm = () => {
 					<Fade key={index} in={url} unmountOnExit>
 						<Alert status='info' mb={4}>
 							<AlertIcon />
-							<AlertTitle>We&apos;ve created an url for you to access your JSON data:</AlertTitle>
+							<AlertTitle>Access your JSON data:</AlertTitle>
 							<AlertDescription>
 								<Link href={url} isExternal>
 									{url} <Icon mx='2px' as={FiExternalLink} />
