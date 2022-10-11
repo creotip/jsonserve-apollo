@@ -67,7 +67,6 @@ export const JsonUploadForm = () => {
 		await createJSON({ variables: { jsonData } })
 	}
 
-	console.log('jsonUrl', jsonUrl)
 	return (
 		<Box mb='1.45rem'>
 			<Textarea
