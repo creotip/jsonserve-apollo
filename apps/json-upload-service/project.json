@@ -4,13 +4,15 @@
 	"projectType": "application",
 	"targets": {
 		"build": {
-			"executor": "@nrwl/node:webpack",
+			"executor": "@nrwl/webpack:webpack",
 			"outputs": ["{options.outputPath}"],
 			"options": {
 				"outputPath": "dist/apps/json-upload-service",
 				"main": "apps/json-upload-service/src/main.ts",
 				"tsConfig": "apps/json-upload-service/tsconfig.app.json",
-				"assets": ["apps/json-upload-service/src/assets"]
+				"assets": ["apps/json-upload-service/src/assets"],
+				"target": "node",
+				"compiler": "tsc"
 			},
 			"configurations": {
 				"production": {
