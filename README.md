@@ -1,6 +1,6 @@
 
 
-# JsonserveApollo
+# Jsonserve Apollo
 
 This project was generated using [Nx](https://nx.dev).
 
