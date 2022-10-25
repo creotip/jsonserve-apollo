@@ -15,7 +15,6 @@ import {
 	AlertDescription,
 } from '@chakra-ui/react'
 import { gql, useMutation } from '@apollo/client'
-// import { isValidJSON } from '@jsonserve-apollo/utils'
 import { FiExternalLink } from 'react-icons/fi'
 
 export const isValidJSON = (json: any) => {
