@@ -15,8 +15,17 @@ import {
 	AlertDescription,
 } from '@chakra-ui/react'
 import { gql, useMutation } from '@apollo/client'
-import { isValidJSON } from '@jsonserve-apollo/utils'
+// import { isValidJSON } from '@jsonserve-apollo/utils'
 import { FiExternalLink } from 'react-icons/fi'
+
+export const isValidJSON = (json: any) => {
+	try {
+		JSON.parse(json)
+		return true
+	} catch (error) {
+		return false
+	}
+}
 
 const CREATE_JSON = gql`
 	mutation CreateJSON($jsonData: String!) {
@@ -60,7 +69,9 @@ export const JsonUploadForm = () => {
 	}
 
 	const save = async () => {
-		if (!isValidJSON(jsonData)) {
+		const isValid = isValidJSON(jsonData)
+
+		if (!isValid) {
 			setStatusIsValidJSON(false)
 			return undefined
 		}
